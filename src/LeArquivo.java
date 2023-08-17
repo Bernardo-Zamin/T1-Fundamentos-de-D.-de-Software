@@ -12,26 +12,26 @@ public class LeArquivo {
     private List<RegistroDoTempo> registros;
     private String nArq;
 
-    public LeArquivo(String nomeArquivo){
+    public LeArquivo(String nomeArquivo) {
         registros = new LinkedList<>();
         this.nArq = nomeArquivo;
     }
 
-    public List<RegistroDoTempo> carregaDados(){
+    public List<RegistroDoTempo> carregaDados() {
         String currDir = Paths.get("").toAbsolutePath().toString();
         // Monta o nome do arquivo
-        String nomeCompleto = currDir+"/"+nArq;
+        String nomeCompleto = currDir + "/" + nArq;
         System.out.println(nomeCompleto);
         // Cria acesso ao "diretorio" da mídia (disco)
         Path path = Paths.get(nomeCompleto);
 
         String linha = "";
-         // Usa a classe scanner para fazer a leitura do arquivo
-         try (Scanner sc = new Scanner(Files.newBufferedReader(path, StandardCharsets.UTF_8))){
+        // Usa a classe scanner para fazer a leitura do arquivo
+        try (Scanner sc = new Scanner(Files.newBufferedReader(path, StandardCharsets.UTF_8))) {
             // Pula o cabecalho
             sc.nextLine();
             // Le os dados
-            while(sc.hasNext()){
+            while (sc.hasNext()) {
                 linha = sc.nextLine();
                 String dados[] = linha.split(" ");
                 // Trata a data
@@ -48,12 +48,13 @@ public class LeArquivo {
                 double umidadeRelativaDoAr = Double.parseDouble(dados[6]);
                 double velocidadeDoVento = Double.parseDouble(dados[7]);
                 // Cria um registro e insere na lista
-                RegistroDoTempo reg = new RegistroDoTempo(dia, mes, ano, precipitacao, tempMaxima, tempMinima, horasInsolacao, temperaturaMedia, umidadeRelativaDoAr, velocidadeDoVento);
+                RegistroDoTempo reg = new RegistroDoTempo(dia, mes, ano, precipitacao, tempMaxima, tempMinima,
+                        horasInsolacao, temperaturaMedia, umidadeRelativaDoAr, velocidadeDoVento);
                 registros.add(reg);
             }
-         }catch (IOException x){
-             System.err.format("Erro de E/S: %s%n", x);
-         }
+        } catch (IOException x) {
+            System.err.format("Erro de E/S: %s%n", x);
+        }
         return registros;
-    }    
+    }
 }
