@@ -3,8 +3,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Predicate;
 
-
-public class Consultas {
+public class Consultas implements CondicoesDeConsulta {
 
     private LeArquivo dados;
     private List<RegistroDoTempo> registros;
@@ -13,7 +12,7 @@ public class Consultas {
     public Consultas(String nomeArquivo) {
         dados = new LeArquivo(nomeArquivo);
         registros = new LinkedList<>();
-        registros = dados.carregaDados(); //classe Consultas depende da classe LeArquivo 
+        registros = dados.carregaDados(); // classe Consultas depende da classe LeArquivo
         condicaoTotal = c -> true;
     }
 
@@ -36,15 +35,15 @@ public class Consultas {
                 .toList();
     }
 
-    public List<String> diasEmQue(){
+    public List<String> diasEmQue() {
         return registros
-               .stream()
-               .filter(condicaoTotal)
-               .map(d -> d.getDia() + "/" + d.getMes() + "/" + d.getAno())
-               .toList();
+                .stream()
+                .filter(condicaoTotal)
+                .map(d -> d.getDia() + "/" + d.getMes() + "/" + d.getAno())
+                .toList();
     }
 
-    public void alteraConsultaPadrao(Predicate<RegistroDoTempo> consulta){
+    public void alteraConsultaPadrao(Predicate<RegistroDoTempo> consulta) {
         this.condicaoTotal = consulta;
     }
 
