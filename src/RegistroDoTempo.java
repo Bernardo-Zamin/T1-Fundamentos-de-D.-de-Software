@@ -10,7 +10,7 @@ public class RegistroDoTempo {
     private double temperaturaMedia;
     private double umidadeRelativaDoAr;
     private double velocidadeDoVento;
-    
+
     public RegistroDoTempo(int dia, int mes, int ano, double precipitacao, double tempMaxima, double tempMinima,
             double horasInsolacao, double temperaturaMedia, double umidadeRelativaDoAr, double velocidadeDoVento) {
         this.dia = dia;
@@ -108,9 +108,9 @@ public class RegistroDoTempo {
     @Override
     public String toString() {
         return "RegistroDoTempo [ano=" + ano + ", dia=" + dia + ", horasInsolacao=" + horasInsolacao + ", mes=" + mes
-                + ", precipitacao=" + precipitacao 
+                + ", precipitacao=" + precipitacao
                 + ", temperatura Maxima=" + tempMaxima + ", temperatura Minima=" + tempMinima
                 + ", temperaturaMedia=" + temperaturaMedia + ", umidadeRelativaDoAr=" + umidadeRelativaDoAr
                 + ", velocidadeDoVento=" + velocidadeDoVento + "]";
-    }    
+    }
 }

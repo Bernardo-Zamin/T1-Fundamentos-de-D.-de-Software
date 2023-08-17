@@ -3,18 +3,19 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
 public class LeArquivo {
+    // Repository
     private List<RegistroDoTempo> registros;
     private String nArq;
 
     public LeArquivo(String nomeArquivo) {
         registros = new LinkedList<>();
         this.nArq = nomeArquivo;
+
     }
 
     public List<RegistroDoTempo> carregaDados() {
@@ -39,6 +40,7 @@ public class LeArquivo {
                 int dia = Integer.parseInt(data[0]);
                 int mes = Integer.parseInt(data[1]);
                 int ano = Integer.parseInt(data[2]);
+
                 // Trata demais dados
                 double precipitacao = Double.parseDouble(dados[1]);
                 double tempMaxima = Double.parseDouble(dados[2]);
